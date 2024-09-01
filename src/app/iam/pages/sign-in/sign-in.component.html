@@ -1,0 +1,46 @@
+<div class="sign-in-content">
+  <div class="image-wrapper">
+    <img src="assets/images/welcome.png" alt="Imagen de fondo" class="side-image">
+  </div>
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title style="color: #000000;">¡Bienvenido de vuelta!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="form-group">
+          <label style="color: #aa67f2;">¿Qué gastos harás hoy?</label>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Coloca tu e-mail o nombre de usuario" id="username" name="username" required formControlName="username">
+            <mat-error *ngIf="isInvalidControl(form,'username')">{{ errorMessagesForControl(form,'username')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Coloca tu contraseña" id="password" name="password" required formControlName="password">
+            <mat-error *ngIf="isInvalidControl(form,'password')">{{ errorMessagesForControl(form,'password')}}</mat-error>
+          </mat-form-field>
+          <div style="text-align: right; margin-top: 5px;">
+            <a mat-button style="color: #c682ff;" [routerLink]="['/forgot-password']">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
+        <div class="form-group">
+          <button mat-raised-button color="primary" style="background-color: #aa67f2; color: #ffffff; width: 100%;">Iniciar sesión</button>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <label style="color: #000000;">¿O usa otra de tus cuentas?</label>
+        </div>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="assets/images/imgGoogleAccess.png" alt="Google"></a>
+          <a href="#" class="social-icon"><img src="assets/images/imgFacebookAccess.png" alt="Facebook"></a>
+          <a href="#" class="social-icon"><img src="assets/images/imgAppleAccess.png" alt="Twitter"></a>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <a mat-button style="color: #000000;" [routerLink]="['/sign-up']">¿Aún no tienes una cuenta? Regístrate</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

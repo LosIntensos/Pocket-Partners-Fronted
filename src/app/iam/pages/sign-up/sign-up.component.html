@@ -1,0 +1,67 @@
+<div class="sign-up-content">
+  <div class="image-wrapper">
+    <img src="assets/images/aside.png" alt="Imagen de fondo" class="side-image">
+  </div>
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title style="color: #000000;">Crea tu cuenta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="form-group">
+          <label style="color: #aa67f2;">¡Es fácil y rápido!</label>
+        </div>
+        <div class="form-group row">
+          <mat-form-field class="half-width">
+            <input matInput placeholder="Username" id="username" name="username" required formControlName="username">
+            <mat-error *ngIf="isInvalidControl(form,'username')">{{ errorMessagesForControl(form,'username')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <input matInput type="password" placeholder="Password" id="password" name="password" formControlName="password">
+            <mat-error *ngIf="isInvalidControl(form,'password')">{{ errorMessagesForControl(form,'password')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group row">
+          <mat-form-field class="half-width">
+            <input matInput type="text" placeholder="Your First Name" id="firstName" name="firstName" required formControlName="firstName">
+            <mat-error *ngIf="isInvalidControl(form,'firstName')">{{ errorMessagesForControl(form,'firstName')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <input matInput type="text" placeholder="Your Last Name" id="lastName" name="lastName" required formControlName="lastName">
+            <mat-error *ngIf="isInvalidControl(form,'lastName')">{{ errorMessagesForControl(form,'lastName')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group row">
+          <mat-form-field class="half-width">
+            <input matInput type="email" placeholder="Your Email" name="email" id="email" required formControlName="email">
+            <mat-error *ngIf="isInvalidControl(form,'email')">{{ errorMessagesForControl(form,'email')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <input matInput type="tel" placeholder="Phone Number" name="phoneNumber" id="phoneNumber" required formControlName="phoneNumber">
+            <mat-error *ngIf="isInvalidControl(form,'phoneNumber')">{{ errorMessagesForControl(form,'phoneNumber')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Photo" name="photo" id="photo" required formControlName="photo">
+            <mat-error *ngIf="isInvalidControl(form,'photo')">{{ errorMessagesForControl(form,'photo')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <button mat-raised-button color="primary" style="background-color: #aa67f2; color: #ffffff; width: 100%;">Registrarse</button>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <label style="color: #aa67f2;">¿O registrate con una cuenta existente?</label>
+        </div>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="assets/images/imgGoogleAccess.png" alt="Google"></a>
+          <a href="#" class="social-icon"><img src="assets/images/imgFacebookAccess.png" alt="Facebook"></a>
+          <a href="#" class="social-icon"><img src="assets/images/imgAppleAccess.png" alt="Twitter"></a>
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <a mat-button style="color: #000000;" [routerLink]="['/sign-in']">¿Ya tienes una cuenta? Inicia Sesión</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
