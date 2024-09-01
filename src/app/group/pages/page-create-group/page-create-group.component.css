@@ -1,0 +1,21 @@
+.create-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 80%;
+    margin: 0 auto;
+}
+.title {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    background-color: #FF7F00;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width:fit-content;
+}
+
+.form {
+    width: 100%;
+    margin-top: 20px;
+}
