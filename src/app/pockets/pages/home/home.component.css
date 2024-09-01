@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.welcome-card {
+  width: 450px;
+  justify-content: left;
+}
+
+.else, .mat-card-subtitle {
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+.welcome-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.currency-image{
+  background-image: url('https://pngimg.com/d/dollar_sign_PNG44.png');
+  width: 80px;
+  height: 80px;
+  border-radius: 30%;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.cards-container {
+   display: flex;
+   align-items: center;
+}
+
+.currency-card {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currency-card {
+  width: 150px;
+  height: 150px;
+  background-color: #8288ff;
+  justify-items: center;
+  justify-content: center;
+}
+
+.balance-card-title, .currency-card-title {
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.movements-image {
+  height: 150px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.app-chart {
+  flex: 1;
+}
+
+
+.expenses-card {
+  width: 45%;
+  margin-right: 20px;
+  background-color: #f0f5ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.expense-card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.expense-card:hover {
+  background-color: #d9e8ff;
+}
+
+.title {
+  text-align: center;
+  color: #5a5a89;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}

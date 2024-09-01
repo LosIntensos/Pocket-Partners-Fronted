@@ -1,0 +1,21 @@
+<div class="group-container">
+  <mat-card *ngFor="let group of groups" class="group-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ group.name }}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <div class="box date">
+          <h4><b>Fecha</b></h4>
+          <p *ngFor="let payment of group.paymentHistory">{{ payment.date }}</p>
+        </div>
+        <div class="box amount">
+          <h4><b>Monto</b></h4>
+          <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{ group.currency }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
