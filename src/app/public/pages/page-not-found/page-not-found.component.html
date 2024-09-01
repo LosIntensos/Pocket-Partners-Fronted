@@ -1,0 +1,4 @@
+<h1>{{'pageNotFound.title' | translate}}</h1>
+<p> {{'pageNotFound.message' | translate: {page: invalidUrl} }} <b>{{ invalidUrl }} </b></p>
+<h3>{{'pageNotFound.redirect' | translate}} {{ secondsToRedirect }} seconds</h3>
+<button (click)="goToHome()">{{"pageNotFound.button" | translate}}</button>

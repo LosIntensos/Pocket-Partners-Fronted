@@ -1,0 +1,7 @@
+<div class="language-switcher">
+  <mat-button-toggle-group [value]="currentLang" appearance="standard" aria-label="Preferred Language" name="language">
+    <mat-button-toggle *ngFor="let language of languages" [value]="language" (click)="useLanguage(language)">
+      {{ language.toUpperCase() }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
