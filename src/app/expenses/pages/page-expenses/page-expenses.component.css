@@ -1,0 +1,32 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.expense-card {
+  max-width: 300px;
+  width: 100%;
+}
+
+.add-button {
+  margin-top: 20px;
+  display: flex;
+  z-index: 10;
+  align-items: end;
+  justify-content: end;
+  margin-right: 20px;
+}
+
+.add-button button {
+  background-color: rgba(198, 130, 255, 0.89);
+  color: white;
+}
+
+.add-button button:hover {
+  background-color: #aa67f2;
+  transition: 0.5s;
+}

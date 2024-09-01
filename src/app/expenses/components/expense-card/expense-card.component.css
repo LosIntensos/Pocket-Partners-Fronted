@@ -1,0 +1,31 @@
+.expense-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+  color: white;
+}
+
+.expense-header {
+  background-color: #c682ff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.expense-content {
+  padding: 16px;
+  color: black;
+}
+
+.expense-actions button {
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+}
+
+.expense-actions button:hover {
+  background-color: #2980b9;
+}

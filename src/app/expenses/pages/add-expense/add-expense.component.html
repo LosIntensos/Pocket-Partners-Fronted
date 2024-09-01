@@ -1,0 +1,6 @@
+<div class="new-expense">
+  <h1 class="title">
+    Add New Expense
+  </h1>
+  <app-form-expense (onAddExpense)="onSubmit($event)" [user]="user" [joinedGroups]="joinedGroups" />
+</div>
