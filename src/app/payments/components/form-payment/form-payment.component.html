@@ -1,0 +1,53 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>
+        Which Group?
+      </ng-template>
+      <mat-form-field>
+        <mat-label>Pick a group</mat-label>
+        <mat-select formControlName="firstCtrl" required (selectionChange)="onGroupSelectionChange($event)">
+          <mat-option *ngFor="let group of joinedGroups" [value]="group.id">
+            {{ group.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>
+        Which Expense?
+      </ng-template>
+      <mat-form-field>
+        <mat-label>Pick an expense</mat-label>
+        <mat-select formControlName="firstCtrl" required>
+          <mat-option *ngFor="let payment of pendingPayments" [value]="payment.id">
+            {{ payment.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      Summary
+    </ng-template>
+    <div>
+      <h1>Summary</h1>
+      <p>Group: {{ firstFormGroup.value.firstCtrl }}</p>
+      <p>Expense: {{ secondFormGroup.value.firstCtrl }}</p>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="onSubmit()">Submit</button>
+    </div>
+  </mat-step>
+</mat-stepper>
