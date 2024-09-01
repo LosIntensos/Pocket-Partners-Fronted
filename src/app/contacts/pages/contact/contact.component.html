@@ -1,0 +1,20 @@
+<div class="card-container">
+  <mat-card *ngFor="let contact of contacts" class="contact-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ contact.fullName }}</mat-card-title>
+      </mat-card-title-group>
+      <img class="contact-image" [src]="contact.photo" alt="Contact Photo">
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <div class="contact-info">
+        <div class="info-item">
+          <p style="display: inline-block;">Email:</p>
+          <p style="display: inline-block; margin-left: 5px;">{{ contact.email }}</p>
+          <p style="display: inline-block;">Phone:</p>
+          <p style="display: inline-block; margin-left: 5px;">{{ contact.phoneNumber }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
