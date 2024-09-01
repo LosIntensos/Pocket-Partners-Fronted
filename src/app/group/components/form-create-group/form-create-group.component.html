@@ -1,0 +1,64 @@
+<mat-stepper [linear]="!isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>
+        Group Information
+      </ng-template>
+      <mat-form-field>
+        <mat-label>Group Name</mat-label>
+        <input matInput formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Group Image(link)</mat-label>
+        <input matInput formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!--   <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>
+        Group Members
+      </ng-template>
+      <mat-form-field class="example-full-width">
+        <mat-label>Contactos</mat-label>
+        <mat-select formControlName="firstCtrl" multiple>
+          @for (member of groupMembersList; track member) {
+          <mat-option [value]="member.id">{{member.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step> -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>
+        Group Currency
+      </ng-template>
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>
+        Confirmation
+      </ng-template>
+      <p>New Group Created</p>
+      <div>
+        <button mat-button matPrimary (click)="createNewGroup()">Done</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

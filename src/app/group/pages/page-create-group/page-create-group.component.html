@@ -1,0 +1,10 @@
+<section class="create-group">
+    <div class="container">
+        <div class="create-group__content">
+            <h1 class="title">{{ 'group.create-group.title' | translate }}</h1>
+        </div>
+    </div>
+    <div class="form">
+        <app-form-create-group (createGroup)="createNewGroup($event)"></app-form-create-group>
+    </div>
+</section>
