@@ -1,0 +1,13 @@
+{
+    "pageNotFound": {
+        "title": "Page not found",
+        "message": "The {{page}} page you are looking for does not exist",
+        "redirect": "Redirecting in",
+        "button": "Go back to home page"
+    },
+    "group": {
+        "create-group": {
+            "title": "Create a group"
+        }
+    }
+}
