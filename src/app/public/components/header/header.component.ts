@@ -7,7 +7,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIcon } from "@angular/material/icon";
 import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
 import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
-import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../../../iam/services/authentication.service';
 
 @Component({

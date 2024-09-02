@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PartnerEntity } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/pockets/model/partnerEntity';
-import { PartnerService } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/pockets/services/Partner.service';
-import { ExpensesEntity } from '../../model/expenses.entity';
-import { ExpensesService } from '../../services/expenses.service';
-import { AuthenticationService } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/iam/services/authentication.service';
-import { GroupService } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/services/group.service';
-import {GroupOperationsService} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/services/group-operations.service";
+import {PartnerService} from "../../../pockets/services/Partner.service";
+import {ExpensesService} from "../../services/expenses.service";
+import {AuthenticationService} from "../../../iam/services/authentication.service";
+import {GroupService} from "../../../group/services/group.service";
+import {GroupOperationsService} from "../../../group/services/group-operations.service";
+import {PartnerEntity} from "../../../pockets/model/partnerEntity";
+import {ExpensesEntity} from "../../model/expenses.entity";
 
 @Component({
   selector: 'app-add-expense',
