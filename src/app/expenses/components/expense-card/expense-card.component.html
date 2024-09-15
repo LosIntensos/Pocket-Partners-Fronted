@@ -4,8 +4,8 @@
     <mat-card-subtitle>Created: {{expense.createdAt | date:'medium'}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="expense-content">
-    <p>Amount: {{expense.amount}}</p>
-    <p>Who owes you? {{user?.fullName}}</p>
+    <p>Total Amount: {{expense.amount}}</p>
+    <p>Uploaded By: {{user?.fullName}}</p>
   </mat-card-content>
   <mat-card-actions class="expense-actions">
     <button mat-icon-button>

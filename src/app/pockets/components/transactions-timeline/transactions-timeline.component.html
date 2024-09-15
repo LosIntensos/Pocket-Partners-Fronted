@@ -1,21 +1,39 @@
-<div class="group-container">
-  <mat-card *ngFor="let group of groups" class="group-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{ group.name }}</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="container">
-        <div class="box date">
-          <h4><b>Fecha</b></h4>
-          <p *ngFor="let payment of group.paymentHistory">{{ payment.date }}</p>
-        </div>
-        <div class="box amount">
-          <h4><b>Monto</b></h4>
-          <p *ngFor="let payment of group.paymentHistory">{{ payment.amount }} {{ group.currency }}</p>
-        </div>
+<mat-card class="transactions-card">
+  <mat-card-header class="header">
+    <mat-card-title>Transaction Timeline</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Payments Section -->
+    <div class="timeline-section">
+      <h2>Payments</h2>
+      <div class="no-data" *ngIf="payments.length === 0">
+        No payments available.
       </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+      <mat-card *ngFor="let payment of payments" class="transaction-card">
+        <mat-card-header>
+          <mat-card-title>Description: {{ payment.description }}</mat-card-title>
+          <mat-card-subtitle>Status: {{ payment.status }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="amount">Total Amount: {{ payment.amount | currency:'PEN' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Expenses Section -->
+    <div class="timeline-section">
+      <h2>Expenses</h2>
+      <div class="no-data" *ngIf="expenses.length === 0">
+        No expenses available.
+      </div>
+      <mat-card *ngFor="let expense of expenses" class="transaction-card">
+        <mat-card-header>
+          <mat-card-title>Description: {{ expense.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="amount">Total Amount: {{ expense.amount | currency:'PEN' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
