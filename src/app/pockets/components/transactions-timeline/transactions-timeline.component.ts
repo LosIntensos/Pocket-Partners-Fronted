@@ -1,36 +1,73 @@
-import {Component, OnInit} from '@angular/core';
-import {GroupEntity} from "../../../group/model/group.entity";
-import {GroupService} from "../../../group/services/group.service";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { AuthenticationService } from '../../../iam/services/authentication.service';
+import {PaymentEntity} from "../../../payments/model/payment-entity";
+import {ExpensesEntity} from "../../../expenses/model/expenses.entity";
+import {ExpensesService} from "../../../expenses/services/expenses.service";
+import {PaymentService} from "../../../payments/services/payment.service";
 
 @Component({
   selector: 'app-transactions-timeline',
   templateUrl: './transactions-timeline.component.html',
-  styleUrl: './transactions-timeline.component.css'
+  styleUrls: ['./transactions-timeline.component.css']
 })
-export class TransactionsTimelineComponent implements OnInit{
-  public groups: GroupEntity[] = [];
-  constructor(private groupService: GroupService) { }
+export class TransactionsTimelineComponent implements OnInit, OnDestroy {
+  public payments: PaymentEntity[] = [];
+  public expenses: ExpensesEntity[] = [];
+  private subscriptions: Subscription[] = [];
+  private userId: number | undefined; // Initialize with `undefined`
 
-  getAllGroups() {
-    this.groupService.getAll()
-      .subscribe((groups: any) => {
-        this.groups = groups;
-      });
-  }
+  constructor(
+    private expensesService: ExpensesService,
+    private paymentService: PaymentService,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
-    this.getAllGroups();
+    // Obtener el ID del usuario logueado
+    const authSubscription = this.authenticationService.currentUserId
+      .subscribe((userId: number) => {
+        this.userId = userId;
+        if (this.userId) { // Check if userId is defined
+          this.getExpenses();
+          this.getPayments();
+        }
+      });
 
-    this.groups.forEach(group => {
-      group.paymentHistory.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    });
-
-    this.groups.forEach(group => {
-      group.paymentHistory = group.paymentHistory.slice(0, 3);
-    });
-
+    this.subscriptions.push(authSubscription);
   }
 
+  getExpenses(): void {
+    if (this.userId !== undefined) {
+      this.expensesService.getExpensesByUserId(this.userId)
+        .subscribe(
+          (expenses: ExpensesEntity[]) => {
+            this.expenses = expenses;
+          },
+          (error: any) => {
+            console.error('Error al obtener gastos:', error);
+          }
+        );
+    }
+  }
 
+  getPayments(): void {
+    if (this.userId !== undefined) {
+      this.paymentService.getPaymentByUserId(this.userId)
+        .subscribe(
+          (payments: PaymentEntity[]) => {
+            this.payments = payments;
+          },
+          (error: any) => {
+            console.error('Error al obtener pagos:', error);
+          }
+        );
+    }
+  }
 
+  ngOnDestroy() {
+    // Limpiar suscripciones para evitar fugas de memoria
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 }
