@@ -2,14 +2,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PartnerEntity } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/pockets/model/partnerEntity';
-import {PaymentEntity} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/payments/model/payment-entity";
-import {PaymentService} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/payments/services/payment.service";
-import {GroupMembersService} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/services/group-members.service";
+import {PartnerEntity} from "../../../pockets/model/partnerEntity";
+import {OperationEntity} from "../../../group/model/operation-entity";
+import {PaymentEntity} from "../../../payments/model/payment-entity";
+import {PaymentService} from "../../../payments/services/payment.service";
+import {GroupMembersService} from "../../../group/services/group-members.service";
 import {ExpensesService} from "../../services/expenses.service";
-import {GroupOperationsService} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/services/group-operations.service";
-import {GroupEntity} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/model/group.entity";
-import {OperationEntity} from "../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/group/model/operation-entity";
+import {GroupOperationsService} from "../../../group/services/group-operations.service";
 
 @Component({
   selector: 'app-form-expense',

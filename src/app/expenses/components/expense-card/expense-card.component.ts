@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
-import { ContactService } from '../../../../../../../../../../Downloads/PocketPartners-master/PocketPartners-master/src/app/contacts/services/contact.service';
+import {ContactService} from "../../../contacts/services/contact.service";
 
 @Component({
   selector: 'app-expense-card',
