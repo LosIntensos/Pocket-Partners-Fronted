@@ -11,6 +11,7 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
 })
 export class PageGroupComponent implements OnInit {
   public groups: GroupEntity[] = [];
+  public searchTerm: string = '';
   currentUserId: number = 0;
   isDataLoaded: Promise<boolean> = new Promise((resolve) => resolve(false));
   constructor(
@@ -31,18 +32,24 @@ export class PageGroupComponent implements OnInit {
         });
         this.groups.forEach(group => {
           this.groupService.getAllMembersByIdGroup(group.id).subscribe
-            ((members: any) => {
-              group.members = members;
-              // validate if the user is in the group
-              if (group.members.some(member => member.userId === this.currentUserId)) {
-                group.isMember = true;
-              } else {
-                group.isMember = false;
-              }
-              console.log("The group: ", group);
-            });
+          ((members: any) => {
+            group.members = members;
+            // validate if the user is in the group
+            if (group.members.some(member => member.userId === this.currentUserId)) {
+              group.isMember = true;
+            } else {
+              group.isMember = false;
+            }
+            console.log("The group: ", group);
+          });
         });
       });
+  }
+
+  filteredGroups() {
+    return this.groups.filter(group =>
+      group.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   openGroup(id: number) {
