@@ -1,5 +1,8 @@
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchText" placeholder="Buscar gastos..." />
+</div>
 <div class="content">
-  <app-expense-card *ngFor="let expense of expenses" class="expense-card" [expense]="expense"></app-expense-card>
+  <app-expense-card *ngFor="let expense of filteredExpenses()" class="expense-card" [expense]="expense"></app-expense-card>
 </div>
 <div class="add-button">
   <button [routerLink]="'add-expense'" mat-fab extended color="primary">
