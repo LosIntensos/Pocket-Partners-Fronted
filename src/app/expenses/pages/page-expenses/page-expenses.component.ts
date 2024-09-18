@@ -9,6 +9,7 @@ import { ExpensesEntity } from '../../model/expenses.entity';
 })
 export class PageExpensesComponent implements OnInit {
   public expenses: ExpensesEntity[] = [];
+  public searchText: string = '';
 
   constructor(public expensesService: ExpensesService) { }
 
@@ -17,12 +18,22 @@ export class PageExpensesComponent implements OnInit {
   }
 
   loadExpenses(): void {
-    this.expensesService.getAll().subscribe((expense: any) => {
-      this.expenses = expense;
+    this.expensesService.getExpenses().subscribe((expenses: ExpensesEntity[]) => {
+      this.expenses = expenses;
+      console.log(this.expenses); 
     });
   }
 
   handleExpenseDeleted(expenseId: number): void {
     this.expenses = this.expenses.filter(expense => expense.id !== expenseId);
+  }
+
+  filteredExpenses(): ExpensesEntity[] {
+    if (!this.searchText) {
+      return this.expenses;
+    }
+    return this.expenses.filter(expense =>
+      expense.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 }

@@ -69,3 +69,39 @@
 .create-group-button:hover {
   background-color: #809fff;
 }
+
+/* Barra de búsqueda */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-container input {
+  width: 300px;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #ece8ff;
+  border-radius: 30px;
+  background-color: #f7f7fc;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #675a89;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.search-container input::placeholder {
+  color: #9a9ab3;
+}
+
+.search-container input:focus {
+  border-color: #a3bffa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .search-container input {
+    width: 100%;
+  }
+}
