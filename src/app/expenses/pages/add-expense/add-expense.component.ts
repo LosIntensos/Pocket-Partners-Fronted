@@ -41,7 +41,6 @@ export class AddExpenseComponent implements OnInit {
   }
 
   onSubmit(expense: ExpensesEntity) {
-    // delete un necessary properties
     let expenseClean: any = { ...expense };
     expenseClean.userId = this.userId;
     delete expenseClean.createdAt;

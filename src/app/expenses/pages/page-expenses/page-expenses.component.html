@@ -1,5 +1,5 @@
 <div class="content">
-  <app-expense-card *ngFor="let expense of expenses" class="expense-card" [expense]="expense"></app-expense-card>
+  <app-expense-card *ngFor="let expense of expenses" class="expense-card" [expense]="expense" (expenseDeleted)="handleExpenseDeleted($event)"></app-expense-card>
 </div>
 <div class="add-button">
   <button [routerLink]="'add-expense'" mat-fab extended color="primary">
