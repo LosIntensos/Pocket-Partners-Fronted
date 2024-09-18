@@ -7,10 +7,12 @@
     <p>Total Amount: {{expense.amount}}</p>
     <p>Uploaded By: {{user?.fullName}}</p>
   </mat-card-content>
-  <mat-card-actions class="expense-actions">
-    <button mat-icon-button>
+  <mat-card-actions style="display: flex;  justify-content: space-between;" class="expense-actions">
+    <button mat-icon-button aria-label="Make Payment">
       <mat-icon>payment</mat-icon>
+    </button>
+    <button mat-icon-button  class="red-light" aria-label="Delete Expense" (click)="deleteExpense(expense.id)">
+      <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>
-

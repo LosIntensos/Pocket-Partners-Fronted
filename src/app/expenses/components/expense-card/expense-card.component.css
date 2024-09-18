@@ -29,3 +29,7 @@
 .expense-actions button:hover {
   background-color: #2980b9;
 }
+
+.red-light {
+  color: #f44336; /* Color rojizo claro */
+}
