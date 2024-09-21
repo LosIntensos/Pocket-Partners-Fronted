@@ -8,7 +8,7 @@
     <p>Uploaded By: {{user?.fullName}}</p>
   </mat-card-content>
   <mat-card-actions class="expense-actions">
-    <button mat-icon-button>
+    <button [routerLink]="['/outgoing/add-payment']" mat-icon-button>
       <mat-icon>payment</mat-icon>
     </button>
   </mat-card-actions>

@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 16px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #ece8ff;
+  border-radius: 30px;
+  background-color: #f7f7fc;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #675a89;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #9a9ab3;
+}
+
+.search-bar input:focus {
+  border-color: #d3a3fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 600px) {
+  .search-bar input {
+    width: 100%;
+  }
+}
+
+
 .content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -22,7 +61,7 @@
 }
 
 .add-button button {
-  background-color: rgba(198, 130, 255, 0.89);
+  background-color: rgb(170, 103, 242);
   color: white;
 }
 
