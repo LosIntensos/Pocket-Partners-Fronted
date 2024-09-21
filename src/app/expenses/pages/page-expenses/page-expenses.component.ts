@@ -14,10 +14,18 @@ export class PageExpensesComponent implements OnInit {
   constructor(public expensesService: ExpensesService) { }
 
   ngOnInit(): void {
+    this.loadExpenses();
+  }
+
+  loadExpenses(): void {
     this.expensesService.getExpenses().subscribe((expenses: ExpensesEntity[]) => {
       this.expenses = expenses;
-      console.log(this.expenses);
+      console.log(this.expenses); 
     });
+  }
+
+  handleExpenseDeleted(expenseId: number): void {
+    this.expenses = this.expenses.filter(expense => expense.id !== expenseId);
   }
 
   filteredExpenses(): ExpensesEntity[] {

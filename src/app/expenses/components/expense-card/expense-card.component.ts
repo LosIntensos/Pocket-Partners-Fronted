@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+// expense-card.component.ts
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
-import {ContactService} from "../../../contacts/services/contact.service";
+import { ContactService } from "../../../contacts/services/contact.service";
+import { ExpensesService } from '../../services/expenses.service';
 
 @Component({
   selector: 'app-expense-card',
@@ -9,9 +11,13 @@ import {ContactService} from "../../../contacts/services/contact.service";
 })
 export class ExpenseCardComponent implements OnInit {
   @Input() expense: ExpensesEntity = new ExpensesEntity();
+  @Output() expenseDeleted: EventEmitter<number> = new EventEmitter<number>();
   user: any;
 
-  constructor(private userService: ContactService) { }
+  constructor(
+    private userService: ContactService,
+    private expensesService: ExpensesService
+  ) { }
 
   ngOnInit() {
     if (this.expense && this.expense.userId) {
@@ -20,5 +26,17 @@ export class ExpenseCardComponent implements OnInit {
         console.log('User loaded:', this.user);
       });
     }
+  }
+
+  deleteExpense(expenseId: number): void {
+    this.expensesService.deleteExpenseById(expenseId).subscribe(
+      () => {
+        console.log(`Expense with ID ${expenseId} deleted successfully.`);
+        this.expenseDeleted.emit(expenseId); 
+      },
+      (error) => {
+        console.error('Error deleting expense:', error);
+      }
+    );
   }
 }

@@ -35,6 +35,11 @@ export class ExpensesService extends BaseService<ExpensesEntity> {
     return this.http.get<ExpensesEntity[]>(`${this.resourcePath()}/userId/${userId}`, this.httpOptions);
   }
 
+  deleteExpenseById(expenseId: number): Observable<any> {
+    return this.http.delete<any>(`${this.resourcePath()}/expenseId/${expenseId}`, this.httpOptions);
+  }
+  
+
 }
 
 
