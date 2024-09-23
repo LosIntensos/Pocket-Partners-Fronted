@@ -10,6 +10,7 @@ import { ExpensesEntity } from '../../model/expenses.entity';
 export class PageExpensesComponent implements OnInit {
   public expenses: ExpensesEntity[] = [];
   public searchText: string = '';
+  public isLoading: boolean = true;
 
   constructor(public expensesService: ExpensesService) { }
 
@@ -18,14 +19,23 @@ export class PageExpensesComponent implements OnInit {
   }
 
   loadExpenses(): void {
-    this.expensesService.getExpenses().subscribe((expenses: ExpensesEntity[]) => {
-      this.expenses = expenses;
-      console.log(this.expenses); 
+    this.isLoading = true; // Mostrar spinner mientras carga
+    this.expensesService.getExpenses().subscribe({
+      next: (expenses: ExpensesEntity[]) => {
+        this.expenses = expenses;
+        console.log('Expenses loaded:', this.expenses);
+        this.isLoading = false; // Ocultar spinner una vez que carguen los datos
+      },
+      error: (err) => {
+        console.error('Error fetching expenses:', err);
+        this.isLoading = false; // Ocultar spinner si hay un error
+      }
     });
   }
 
   handleExpenseDeleted(expenseId: number): void {
     this.expenses = this.expenses.filter(expense => expense.id !== expenseId);
+    this.loadExpenses();
   }
 
   filteredExpenses(): ExpensesEntity[] {
