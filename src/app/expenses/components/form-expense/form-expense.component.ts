@@ -65,8 +65,6 @@ export class FormExpenseComponent {
       });
     });
 
-    // redirect to expenses list
-    this.router.navigate(['/expenses']);
   }
 
 }

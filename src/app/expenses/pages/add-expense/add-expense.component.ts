@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {PartnerService} from "../../../pockets/services/Partner.service";
-import {ExpensesService} from "../../services/expenses.service";
-import {AuthenticationService} from "../../../iam/services/authentication.service";
-import {GroupService} from "../../../group/services/group.service";
-import {GroupOperationsService} from "../../../group/services/group-operations.service";
-import {PartnerEntity} from "../../../pockets/model/partnerEntity";
-import {ExpensesEntity} from "../../model/expenses.entity";
+import { PartnerService } from "../../../pockets/services/Partner.service";
+import { ExpensesService } from "../../services/expenses.service";
+import { AuthenticationService } from "../../../iam/services/authentication.service";
+import { GroupService } from "../../../group/services/group.service";
+import { GroupOperationsService } from "../../../group/services/group-operations.service";
+import { PartnerEntity } from "../../../pockets/model/partnerEntity";
+import { ExpensesEntity } from "../../model/expenses.entity";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-expense',
@@ -15,13 +16,16 @@ import {ExpensesEntity} from "../../model/expenses.entity";
 export class AddExpenseComponent implements OnInit {
   userId: number = 0;
   joinedGroups: any = [];
+
   constructor(
     private partnerService: PartnerService,
     private expenseService: ExpensesService,
     private authenticationService: AuthenticationService,
     private groupService: GroupService,
     private groupOperationService: GroupOperationsService,
+    private router: Router // Agregado para redirigir a expenses
   ) { }
+
   user: PartnerEntity = new PartnerEntity();
 
   ngOnInit(): void {
@@ -32,7 +36,6 @@ export class AddExpenseComponent implements OnInit {
           groups.forEach((group: any) => {
             this.groupService.getById(group.groupId).subscribe((group: any) => {
               this.joinedGroups.push(group);
-
             });
           });
         });
@@ -45,6 +48,12 @@ export class AddExpenseComponent implements OnInit {
     expenseClean.userId = this.userId;
     delete expenseClean.createdAt;
     delete expenseClean.updatedAt;
-    this.expenseService.create(expenseClean).subscribe();
+    this.expenseService.create(expenseClean).subscribe(() => {
+      this.redirectToExpensesList(); // Redirigir a la lista de gastos después de crear el gasto
+    });
+  }
+
+  redirectToExpensesList() {
+    this.router.navigate(['/expenses']); // Redirigir a la lista de gastos
   }
 }
