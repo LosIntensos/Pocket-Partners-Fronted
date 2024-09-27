@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'groups', component: PageGroupComponent, canActivate: [authenticationGuard], },
   { path: 'group-detail/:id', component: PageGroupDetailsComponent, canActivate: [authenticationGuard], },
-  { path: 'users', component: ContactComponent, canActivate: [authenticationGuard], },
+  { path: 'profile', component: ContactComponent, canActivate: [authenticationGuard], },
   { path: 'incoming', component: IncomingComponent, canActivate: [authenticationGuard], },
   { path: 'outgoing', component: OutgoingComponent, canActivate: [authenticationGuard], },
   { path: 'create-group', component: PageCreateGroupComponent, canActivate: [authenticationGuard], },
