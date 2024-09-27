@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Import our pages
+
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 import { PageCreateGroupComponent } from './group/pages/page-create-group/page-create-group.component';
 import { HomeComponent } from "./pockets/pages/home/home.component";

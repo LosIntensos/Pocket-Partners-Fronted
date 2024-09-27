@@ -41,7 +41,7 @@ export class AddPaymentComponent implements OnInit {
   }
 
   onGroupChange(groupId: number): void {
-    this.pendingPayments = []; // Clear the previous payments
+    this.pendingPayments = []; 
     this.groupOperationService.getAllGroupOperationsByGroupId(groupId).subscribe((groupOperations: any) => {
       groupOperations.forEach((groupOperation: any) => {
         this.paymentService.getPaymentByUserIdAndStatus(this.userId, groupOperation.status="PENDING").subscribe((payments: any) => {

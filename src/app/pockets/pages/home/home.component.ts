@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
     this.expensesService.getExpenses()
       .subscribe(
         (expenses: ExpensesEntity[]) => {
-          // Filtrar los gastos del usuario especificado
-          // @ts-ignore
+          
+          
           this.expenses = expenses.filter(expense => expense.userId !== this.userId);
         },
         (error) => {
@@ -63,11 +63,11 @@ export class HomeComponent implements OnInit {
   }
 
   generateUserReport() {
-    // Obtener los gastos del usuario
+    
     this.expensesService.getExpensesByUserId(this.userId).subscribe(expenses => {
-      // Obtener los grupos a los que pertenece el usuario
+      
       this.groupService.getById(this.userId).subscribe(groups => {
-        // Validar si hay gastos y grupos
+        
         if (expenses.length === 0) {
           alert('No hay gastos disponibles para generar el reporte.');
           return;
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
           totalExpenses: expenses.reduce((sum, expense) => sum + expense.amount, 0)
         };
 
-        // Llama a la función para descargar el reporte
+        
         this.downloadReport(reportData);
       });
     });
@@ -88,12 +88,12 @@ export class HomeComponent implements OnInit {
   downloadReport(reportData: any) {
     const csvRows = [];
 
-    // Agregar encabezados para gastos
+    
     csvRows.push(['Gastos', '', '', '']);
     const expenseHeaders = ['Expense Name', 'Amount', 'Created At', 'Uploaded By'];
     csvRows.push(expenseHeaders.join(','));
 
-    // Agregar datos de gastos
+    
     reportData.expenses.forEach((expense: { name: any; amount: any; createdAt: string | number | Date; uploadedBy: any; }) => {
       const row = [
         expense.name,
@@ -104,16 +104,16 @@ export class HomeComponent implements OnInit {
       csvRows.push(row.join(','));
     });
 
-    // Agregar total de gastos
+    
     csvRows.push(['', 'Total Expenses:', reportData.totalExpenses, '']);
 
-    // Agregar encabezados para grupos
+    
     csvRows.push(['', '', '', '']);
     csvRows.push(['Grupos', '', '', '']);
     const groupHeaders = ['Group Name', 'Group ID'];
     csvRows.push(groupHeaders.join(','));
 
-    // Agregar datos de grupos
+    
     if (reportData.groups.length > 0) {
       reportData.groups.forEach((group: { name: any; id: any; }) => {
         const row = [group.name, group.id];
@@ -123,19 +123,19 @@ export class HomeComponent implements OnInit {
       csvRows.push(['No hay grupos disponibles.', '', '']);
     }
 
-    // Crear una cadena CSV
+    
     const csvString = csvRows.join('\n');
 
-    // Crear un blob de los datos CSV
+    
     const blob = new Blob([csvString], { type: 'text/csv' });
 
-    // Crear un enlace de descarga
+    
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.setAttribute('href', url);
     a.setAttribute('download', 'user_expenses_report.csv');
-    a.click(); // Simula un clic en el enlace para descargar
-    window.URL.revokeObjectURL(url); // Libera el objeto URL
+    a.click(); 
+    window.URL.revokeObjectURL(url); 
   }
 
 
