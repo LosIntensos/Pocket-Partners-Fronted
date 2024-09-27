@@ -57,6 +57,11 @@
   }
 }
 
+.report-button-container {
+  display: flex;
+  justify-content: center; /* Centrar el botón */
+  margin-top: 20px; /* Espaciado superior */
+}
 
 
 

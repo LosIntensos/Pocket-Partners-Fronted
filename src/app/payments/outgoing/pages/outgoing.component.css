@@ -1,9 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f8f8; /* Fondo claro */
+  margin: 0;
+  padding: 0;
+}
+
 .title-container {
+  
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 20px 0;
+}
+
+.title-container h1 {
+  padding: 10px 20px;
+  background-color: #ff9900; /* Naranja claro */
+  border-radius: 20px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.matcard{
+  display: flex;
+  flex-wrap: wrap;
+
+ justify-content: space-between;
+ align-items: center;
+  
+}
+
+.mat-title{
+  
 }
 
 .loading-container {
@@ -19,40 +51,21 @@
   z-index: 1;
 }
 
-.title-container h1 {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ff8c00;
-  border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-  font-size: 24px;
-}
-
-.group-card {
-  margin: 1.5rem;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background-color: #fff;
-  transition: transform 0.3s;
-}
-
-.group-card:hover {
-  transform: scale(1.02);
-}
-
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap; /* Permitir que las tarjetas se ajusten */
   margin: 0 1.5rem 40px;
 }
 
 .card {
-  flex: 1;
-  margin: 0 1rem;
+  flex: 1 1 300px; /* Tarjetas mínimas de 300px */
+  margin: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+  max-width: 90%; /* Limitar el ancho máximo */
 }
 
 .group-container {
@@ -61,54 +74,73 @@
 
 .group-card {
   margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #fff9fa; /* Naranja claro */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.box {
-  width: calc((100% - 2 * 1em) / 3);
-  text-align: left;
-}
-
-.box h3,
-.box h4 {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-}
-
-.box p {
-  font-family: 'Arial', sans-serif;
-  color: #777;
-  margin: 0.5em 0;
+.group-card:hover {
+  transform: translateY(-5px);
 }
 
 .btnPago {
   color: white;
-  background-color: rgb(170, 103, 242);
+  background-color: #ff7043; /* Color de botón */
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 20px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-left: 153px;
 }
 
 .btnPago:hover {
-  background-color: rgb(150, 83, 222);
+  background-color: #ff5722; /* Color de botón al pasar el mouse */
 }
 
-@media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
+/* Media Queries para mayor responsividad */
+@media only screen and (max-width: 768px) {
+  .cards {
+    justify-content: center; /* Centrar tarjetas en pantallas más pequeñas */
   }
 
-  .box {
-    width: 100%;
-    margin-bottom: 1em;
+  .matcard{
+    display: flex;
+    gap:10px;
+  
+   justify-content: center;
+   align-items: center;
+    
+  }
+
+  .card {
+    flex: 1 1 calc(50% - 2rem); /* 2 tarjetas por fila en pantallas medianas */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .card {
+    flex: 1 1 calc(100% - 2rem); /* Tarjetas ocupan el 100% del ancho en pantallas pequeñas */
+  }
+
+  .matcard{
+    display: flex;
+    gap:10px;
+  
+   justify-content: center;
+   align-items: center;
+    
+  }
+
+  .title-container h1 {
+    font-size: 20px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+
+  .btnPago {
+    
+    padding: 20px; /* Tamaño de botón más pequeño en pantallas pequeñas */
+    font-size: 14px; /* Fuente más pequeña en botones */
   }
 }

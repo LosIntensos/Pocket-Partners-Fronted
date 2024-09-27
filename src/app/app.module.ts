@@ -56,7 +56,7 @@ import { authenticationInterceptor } from './iam/services/authentication.interce
 
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -127,6 +127,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChartModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     provideAnimationsAsync(),
