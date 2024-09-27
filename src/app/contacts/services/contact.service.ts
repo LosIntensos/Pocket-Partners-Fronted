@@ -24,4 +24,9 @@ export class ContactService extends BaseService<ContactEntity> {
       .pipe(catchError(this.handleError));
   }
 
+  updateUserById(userId: any, updatedUserData: any) {
+    return this.http.put<any>(`${this.resourcePath()}/${userId}`, updatedUserData, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
 }
