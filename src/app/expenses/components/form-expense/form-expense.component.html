@@ -2,54 +2,41 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>
-        New Expense
+        {{ 'expense.new' | translate }} <!-- Traducción para "New Expense" -->
       </ng-template>
       <mat-form-field>
-        <mat-label>Give it a name</mat-label>
+        <mat-label>{{ 'expense.name' | translate }}</mat-label> <!-- Traducción para "Give it a name" -->
         <input matInput formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>{{ 'common.next' | translate }}</button> <!-- Traducción para "Next" -->
       </div>
     </form>
   </mat-step>
-  <!--   <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>
-        When?
-      </ng-template>
-      <mat-form-field>
-        <mat-label>Date of the Expense</mat-label>
-        <input type="date" matInput formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step> -->
+
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>
-        How much?
+        {{ 'expense.amount' | translate }} <!-- Traducción para "How much?" -->
       </ng-template>
       <mat-form-field>
-        <mat-label>Set the amount</mat-label>
+        <mat-label>{{ 'expense.set_amount' | translate }}</mat-label> <!-- Traducción para "Set the amount" -->
         <input type="number" matInput formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>{{ 'common.back' | translate }}</button> <!-- Traducción para "Back" -->
+        <button mat-button matStepperNext>{{ 'common.next' | translate }}</button>
       </div>
     </form>
   </mat-step>
+
   <mat-step [stepControl]="fourthFormGroup">
     <form [formGroup]="fourthFormGroup">
       <ng-template matStepLabel>
-        Which group?
+        {{ 'expense.group' | translate }} <!-- Traducción para "Which group?" -->
       </ng-template>
       <mat-form-field>
-        <mat-label>Pick a group</mat-label>
+        <mat-label>{{ 'expense.pick_group' | translate }}</mat-label> <!-- Traducción para "Pick a group" -->
         <mat-select formControlName="firstCtrl" required>
           <mat-option *ngFor="let group of joinedGroups" [value]="group.id">
             {{ group.name }}
@@ -57,24 +44,25 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>{{ 'common.back' | translate }}</button>
+        <button mat-button matStepperNext>{{ 'common.next' | translate }}</button>
       </div>
     </form>
   </mat-step>
+
   <mat-step>
     <ng-template matStepLabel>
-      Summary
+      {{ 'expense.summary' | translate }} <!-- Traducción para "Summary" -->
     </ng-template>
     <div>
-      <h1>Summary</h1>
-      <p>Name: {{ firstFormGroup.value.firstCtrl }}</p>
-      <p>Expense: {{ thirdFormGroup.value.firstCtrl }}</p>
-      <p>Group: {{ fourthFormGroup.value.firstCtrl }}</p>
+      <h1>{{ 'expense.summary' | translate }}</h1>
+      <p>{{ 'expense.name' | translate }}: {{ firstFormGroup.value.firstCtrl }}</p>
+      <p>{{ 'expense.amount' | translate }}: {{ thirdFormGroup.value.firstCtrl }}</p>
+      <p>{{ 'expense.group' | translate }}: {{ fourthFormGroup.value.firstCtrl }}</p>
     </div>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="onSubmit()">Submit</button>
+      <button mat-button matStepperPrevious>{{ 'common.back' | translate }}</button>
+      <button mat-button (click)="onSubmit()">{{ 'common.submit' | translate }}</button> <!-- Traducción para "Submit" -->
     </div>
   </mat-step>
 </mat-stepper>

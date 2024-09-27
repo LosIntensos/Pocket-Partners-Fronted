@@ -1,68 +1,60 @@
 @if (dataLoaded | async) {
-<div class="title-container">
-  <h1>Outgoing Payments</h1>
-</div>
+  <div class="title-container">
+    <h1>{{ 'payments.outgoing' | translate }}</h1> <!-- Traducción para "Outgoing Payments" -->
+  </div>
 
-<div class="cards">
-  <mat-card class="done card">
-    <mat-card-header>
-      <mat-card-title>Payments Made</mat-card-title>
-    </mat-card-header>
+  <div class="cards">
+    <mat-card class="done card">
+      <mat-card-header>
+        <mat-card-title>{{ 'payments.made' | translate }}</mat-card-title> <!-- Traducción para "Payments Made" -->
+      </mat-card-header>
 
-    <mat-card-content>
-      <div class="group-container">
-        @if (paymentsMade.length > 0) {
-        <mat-card *ngFor="let payment of paymentsMade" class="group-card">
-          <mat-card-header>
-            <mat-card-title-group>
+      <mat-card-content>
+        <div class="group-container">
+          @if (paymentsMade.length > 0) {
+            <mat-card *ngFor="let payment of paymentsMade" class="group-card">
+              <mat-card-header>
+                <mat-card-title>{{ payment.description }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
+                <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
+                <mat-card-subtitle>{{ 'payments.groups' | translate }}: {{ payment.group.name }}</mat-card-subtitle> <!-- Traducción para "Groups:" -->
+              </mat-card-content>
+            </mat-card>
+          } @else {
+            <mat-card-content>
+              {{ 'payments.noPayments' | translate }} <!-- Traducción para "No payments yet. Make one!" -->
+            </mat-card-content>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="missing card">
+      <mat-card-header class="matcard">
+        <mat-card-title class="mat-title">{{ 'payments.toDo' | translate }}</mat-card-title> <!-- Traducción para "Payments to Do" -->
+        <button [routerLink]="'add-payment'" mat-raised-button class="btnPago">{{ 'payments.makePayment' | translate }}</button> <!-- Traducción para "Make Payment" -->
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="group-container">
+          <mat-card *ngFor="let payment of paymentsToDo" class="group-card">
+            <mat-card-header>
               <mat-card-title>{{ payment.description }}</mat-card-title>
-            </mat-card-title-group>
-
-          </mat-card-header>
-          <mat-card-content>
-            <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
-            <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
-            <mat-card-subtitle>Groups: {{ payment.group.name }}</mat-card-subtitle>
-          </mat-card-content>
-        </mat-card>
-        }
-        @else {
-          <mat-card-content>
-            Todavía no hay pagos. ¡Haz uno!
-          </mat-card-content>
-        }
-      </div>
-    </mat-card-content>
-  </mat-card>
-
-
-  <mat-card class="missing card">
-    <mat-card-header>
-      <mat-card-title>Payments to Do</mat-card-title>
-      <button [routerLink]="'add-payment'" mat-raised-button class="btnPago">Make Payment</button>
-    </mat-card-header>
-
-    <mat-card-content>
-      <div class="group-container">
-        <mat-card *ngFor="let payment of paymentsToDo" class="group-card">
-          <mat-card-header>
-            <mat-card-title-group>
-              <mat-card-title>{{ payment.description }}</mat-card-title>
-            </mat-card-title-group>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
-            <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
-            <mat-card-subtitle>Groups: {{ payment.group.name }}</mat-card-subtitle>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
-}
-@else {
-<div class="loading-container">
-  <mat-spinner></mat-spinner>
-</div>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-card-subtitle>{{ payment.date | date }}</mat-card-subtitle>
+              <mat-card-subtitle>{{ payment.amount | currency }}</mat-card-subtitle>
+              <mat-card-subtitle>{{ 'payments.groups' | translate }}: {{ payment.group.name }}</mat-card-subtitle> <!-- Traducción para "Groups:" -->
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+} @else {
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
 }

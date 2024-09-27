@@ -1,6 +1,12 @@
 <div class="new-payment">
   <h1 class="title">
-    Add New Payment
+    {{ 'payment.addNew' | translate }} <!-- Traducción para "Add New Payment" -->
   </h1>
-  <app-form-payment (onAddPayment)="onSubmit($event)" [user]="user" [joinedGroups]="joinedGroups" [pendingPayments]="pendingPayments" (groupChange)="onGroupChange($event)"></app-form-payment>
+  <app-form-payment 
+    (onAddPayment)="onSubmit($event)" 
+    [user]="user" 
+    [joinedGroups]="joinedGroups" 
+    [pendingPayments]="pendingPayments" 
+    (groupChange)="onGroupChange($event)">
+  </app-form-payment>
 </div>
