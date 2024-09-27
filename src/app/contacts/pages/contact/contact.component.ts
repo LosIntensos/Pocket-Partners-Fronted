@@ -10,15 +10,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-  public userProfile: any | null = null;  // Para almacenar los detalles del perfil del usuario
-  public userForm: FormGroup; // Formulario reactivo
-  public isEditing: boolean = false; // Para activar el modo de edición
-  public userId: number | undefined; // ID del usuario logueado
+  public userProfile: any | null = null;  
+  public userForm: FormGroup; 
+  public isEditing: boolean = false; 
+  public userId: number | undefined; 
 
   constructor(
     private contactService: ContactService,
-    private authService: AuthenticationService,  // Inyectar el servicio de autenticación
-    private fb: FormBuilder  // Inyectar FormBuilder
+    private authService: AuthenticationService,  
+    private fb: FormBuilder  
   ) {
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -29,26 +29,26 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  // Método para obtener los detalles del usuario logueado por su ID
+  
   getUserDetails() {
     this.authService.currentUserId.subscribe((userId: any) => {
       if (userId) {
-        this.userId = userId; // Almacena el ID del usuario logueado
-        // Usar el ID del usuario logueado para obtener su perfil
+        this.userId = userId; 
+        
         this.contactService.getUserById(userId)
           .subscribe((profile: any) => {
-            this.userProfile = profile;  // Almacenar los detalles del perfil
+            this.userProfile = profile;  
 
-            // Separar fullName en firstName y lastName solo si fullName existe
+            
             if (profile.fullName) {
               const names = profile.fullName.split(' ');
-              this.userProfile.firstName = names[0]; // Primer nombre
-              this.userProfile.lastName = names.slice(1).join(' '); // El resto como apellido
+              this.userProfile.firstName = names[0]; 
+              this.userProfile.lastName = names.slice(1).join(' '); 
             }
 
-            // Inicializar el formulario con los datos del perfil
+            
             this.userForm.patchValue({
-              firstName: this.userProfile.firstName || '',  // Fallback a '' si está vacío
+              firstName: this.userProfile.firstName || '',  
               lastName: this.userProfile.lastName || '',
               email: profile.email || '',
               phoneNumber: profile.phoneNumber || '',
@@ -62,14 +62,14 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserDetails();  // Obtener los detalles del usuario al inicializar el componente
+    this.getUserDetails();  
   }
 
-  // Activar modo edición
+  
   enableEditing() {
     this.isEditing = true;
 
-    // Asegurarse de que firstName y lastName están definidos al iniciar edición
+    
     if (!this.userProfile.firstName || !this.userProfile.lastName) {
       const names = this.userProfile.fullName ? this.userProfile.fullName.split(' ') : ['', ''];
       this.userProfile.firstName = names[0];
@@ -82,7 +82,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  // Guardar los cambios
+  
   saveChanges() {
     if (this.userForm.valid) {
       const updatedData = {
@@ -95,11 +95,11 @@ export class ContactComponent implements OnInit {
 
       this.contactService.updateUserById(this.userId, updatedData).subscribe({
         next: (response) => {
-          // Actualizar fullName después de guardar
+          
           this.userProfile.fullName = `${updatedData.firstName} ${updatedData.lastName}`;
 
           this.isEditing = false;
-          this.getUserDetails(); // Recargar el perfil con los cambios guardados
+          this.getUserDetails(); 
         },
         error: (error) => {
           console.error('Error actualizando el perfil:', error);
@@ -108,9 +108,9 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  // Cancelar edición
+  
   cancelEditing() {
     this.isEditing = false;
-    this.getUserDetails(); // Recargar el perfil sin cambios
+    this.getUserDetails(); 
   }
 }

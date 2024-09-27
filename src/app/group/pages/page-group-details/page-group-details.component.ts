@@ -22,7 +22,7 @@ export class PageGroupDetailsComponent implements OnInit {
   totalOfMembers: number = 0;
   amountOfPayToYou: number = 0;
   amountEachMemberShouldPay: number = 0;
-  paidMembers: Set<number> = new Set<number>(); // Set to store paid member IDs
+  paidMembers: Set<number> = new Set<number>(); 
   currentCurrency: string = 'PEN';
   pieChart!: Chart<"pie", number[], string>;
   groupMemberInformation: any[] = [];
@@ -44,7 +44,7 @@ export class PageGroupDetailsComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.url[1].path, 10);
 
     if (this.id) {
-      // Obtain group information
+      
       this.groupService.getById(this.id).subscribe((group: any) => {
         this.group = group;
         this.currentCurrency = group.currency[0].code;
@@ -119,7 +119,7 @@ export class PageGroupDetailsComponent implements OnInit {
     const numberOfUnpaidMembers = this.totalOfMembers - numberOfPaidMembers;
 
     if (this.pieChart) {
-      this.pieChart.destroy(); // Destroy existing chart to prevent memory leaks
+      this.pieChart.destroy(); 
     }
 
     const canvas = document.getElementById('pieChart') as HTMLCanvasElement;

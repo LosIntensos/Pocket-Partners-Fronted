@@ -46,7 +46,7 @@ export class OutgoingComponent implements OnInit {
           console.log("Payments made: ", this.paymentsMade);
           payments.forEach((paymentData:any) => {
             this.expenseService.getExpenseById(paymentData.expenseId).subscribe((expense: any) => {
-              //i want to add the expense to the paymentMade like a other atributte
+              
               paymentData.expense = expense;
               this.groupService.getById(expense.groupId).subscribe((group: any) => {
                 paymentData.group = group;
@@ -68,7 +68,7 @@ export class OutgoingComponent implements OnInit {
           console.log("Payments to do: ", this.paymentsToDo);
           payments.forEach((paymentData:any) => {
             this.expenseService.getExpenseById(paymentData.expenseId).subscribe((expense: any) => {
-              //i want to add the expense to the paymentMade like a other atributte
+              
               paymentData.expense = expense;
               this.groupService.getById(expense.groupId).subscribe((group: any) => {
                 paymentData.group = group;

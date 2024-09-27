@@ -14,7 +14,7 @@ export class ExpensesService extends BaseService<ExpensesEntity> {
     this.resourceEndpoint = '/expenses';
   }
 
-  // XD? Cuando hice esto
+  
   getJoinedUserGroups(userId: number): Observable<any> {
     return this.http.get<any>(`${this.basePath}/groups/members/${userId}`, this.httpOptions);
   }
