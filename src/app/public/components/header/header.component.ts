@@ -8,6 +8,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
 import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
 import { AuthenticationService } from '../../../iam/services/authentication.service';
+import { TranslateModule } from '@ngx-translate/core'; // Importar TranslateModule
 
 @Component({
   selector: 'app-header',
@@ -28,7 +29,8 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
     MatIconButton,
     MatMenu,
     MatMenuItem,
-    MatAnchor
+    MatAnchor,
+    TranslateModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

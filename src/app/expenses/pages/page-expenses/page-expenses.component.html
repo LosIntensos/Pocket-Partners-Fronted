@@ -1,11 +1,10 @@
 <div class="search-bar">
-  <input type="text" [(ngModel)]="searchText" placeholder="Buscar gastos..." />
+  <input type="text" [(ngModel)]="searchText" [placeholder]="'expense.search' | translate" /> <!-- Traducción para el placeholder -->
 </div>
 <div class="content" *ngIf="!isLoading; else loading">
   <app-expense-card *ngFor="let expense of filteredExpenses()"
                     class="expense-card" [expense]="expense"
                     (expenseDeleted)="handleExpenseDeleted($event)">
-
   </app-expense-card>
 </div>
 <ng-template #loading>
@@ -16,6 +15,6 @@
 <div class="add-button">
   <button [routerLink]="'add-expense'" mat-fab extended color="primary">
     <mat-icon>add</mat-icon>
-    New Expense
+    {{ 'expense.new' | translate }} 
   </button>
 </div>

@@ -16,6 +16,7 @@ export class LanguageSwitcherComponent {
 
   useLanguage(language: string) {
     this.translate.use(language);
+    this.currentLang = language; 
   }
 
 }

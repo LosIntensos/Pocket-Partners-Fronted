@@ -3,24 +3,33 @@
     <mat-card>
       <mat-card-title>{{ group.name }}</mat-card-title>
       <mat-card-header>
-        <img [src]="group.groupPhoto" alt="Imagen de grupo">
+        <img [src]="group.groupPhoto" alt="{{ 'group.photoAlt' | translate }}" >
         <mat-card-title-group>
-          <mat-card-title>El grupo {{ group.name }}
+          <mat-card-title>{{ 'group.debtInfo' | translate: { groupName: group.name } }}
             @if (amountOfPayToYou > 0) {
-            te debe: {{ amountOfPayToYou }}
-            } @else if (amountOfPayToYou < 0) { le debes: {{ amountOfPayToYou*-1 }} } @else { Estas al dia }
-              @if(currentCurrency=='PEN' ){ Soles } @else { {{ currentCurrency }} } </mat-card-title>
+              {{ 'group.owesYou' | translate }}: {{ amountOfPayToYou }}
+            } @else if (amountOfPayToYou < 0) {
+              {{ 'group.youOwe' | translate }}: {{ amountOfPayToYou * -1 }}
+            } @else {
+              {{ 'group.upToDate' | translate }}
+            }
+            @if (currentCurrency == 'PEN') {
+              {{ 'group.currencySol' | translate }}
+            } @else {
+              {{ currentCurrency }}
+            }
+          </mat-card-title>
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
-        <p>Creación: {{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
-        <p *ngFor="let currency of group.currency">Currency: {{ currency.code }}</p>
-        <p>Integrantes: {{ totalOfMembers }}</p>
+        <p>{{ 'group.creationDate' | translate }}: {{ group.createdAt | date: 'dd/MM/yyyy' }}</p>
+        <p *ngFor="let currency of group.currency">{{ 'group.currency' | translate }}: {{ currency.code }}</p>
+        <p>{{ 'group.members' | translate }}: {{ totalOfMembers }}</p>
       </mat-card-content>
     </mat-card>
 
     <mat-card>
-      <mat-card-title>Cada miembro debe pagar</mat-card-title>
+      <mat-card-title>{{ 'group.eachMemberMustPay' | translate }}</mat-card-title>
       <mat-card-content>
         <div *ngFor="let member of groupMemberInformation">
           <label [class.checked]="isMemberPaid(member.userId)">
@@ -35,7 +44,7 @@
 
   <div class="left-card">
     <mat-card>
-      <mat-card-title>Distribución de pagos</mat-card-title>
+      <mat-card-title>{{ 'group.paymentDistribution' | translate }}</mat-card-title>
       <mat-card-content>
         <div style="display: flex; justify-content: center;">
           <canvas id="pieChart"></canvas>

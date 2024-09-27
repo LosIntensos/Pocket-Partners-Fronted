@@ -1,13 +1,136 @@
 {
-    "pageNotFound": {
-        "title": "Page not found",
-        "message": "The {{page}} page you are looking for does not exist",
-        "redirect": "Redirecting in",
-        "button": "Go back to home page"
-    },
-    "group": {
-        "create-group": {
-            "title": "Create a group"
-        }
-    }
+    "header": {
+    "appTitle": "PocketPartners",
+    "home": "Home",
+    "profile": "Profile",
+    "groups": "Groups",
+    "newGroup": "New Group",
+    "expenses": "Expenses",
+    "incomingPayments": "Incoming Payments",
+    "outgoingPayments": "Outgoing Payments",
+    "logout": "Logout"
+  } ,
+  "pageNotFound": {
+    "title": "Page not found",
+    "message": "The {{page}} page you are looking for does not exist.",
+    "redirect": "Redirecting in",
+    "button": "Go back to home page"
+  },
+  "createGroup": {
+    "title": "Create Group",
+    "groupInfo": "Group Information",
+    "groupName": "Group Name",
+    "groupImage": "Group Image (link)",
+    "next": "Next",
+    "groupCurrency": "Group Currency",
+    "currency": "Currency",
+    "confirmation": "Confirmation",
+    "newGroupCreated": "New Group Created",
+    "done": "Done"
+  },
+  "groups": {
+    "allGroups": "All Groups",
+    "searchGroup": "Search group",
+    "youAreInGroup": "You are in the group",
+    "viewDetails": "View details",
+    "joinGroup": "Join the group",
+    "createGroup": "Create group"
+  },
+  "group": {
+    "debtInfo": "The group {{groupName}}",
+    "photoAlt": "Group photo",
+    "owesYou": "owes you",
+    "youOwe": "you owe",
+    "upToDate": "You are up to date",
+    "currencySol": "Soles",
+    "creationDate": "Creation",
+    "currency": "Currency",
+    "members": "Members",
+    "eachMemberMustPay": "Each member must pay",
+    "paymentDistribution": "Payment distribution"
+  },
+  "expense": {
+    "title": "Expense",
+    "created": "Created",
+    "totalAmount": "Total Amount",
+    "uploadedBy": "Uploaded By",
+    "makePayment": "Make Payment",
+    "delete": "Delete Expense",
+    "new": "New Expense",
+    "name": "Give it a name",
+    "amount": "How much?",
+    "setAmount": "Set the amount",
+    "group": "Which group?",
+    "pickGroup": "Pick a group",
+    "summary": "Summary",
+    "search": "Search expenses...",
+    "addNew": "Add New Expense",
+    "which": "Which Expense?",
+    "pick": "Pick an expense",
+    "uploadedByYou": "Expenses Uploaded by YOU"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "done": "Done"
+  },
+  "summary": {
+    "title": "Summary",
+    "heading": "Summary",
+    "group": "Group",
+    "expense": "Expense"
+  },
+  "payment": {
+    "addNew": "Add New Payment"
+  },
+  "payments": {
+    "incoming": "Incoming Payments",
+    "members": "Members",
+    "description": "Description",
+    "amount": "Amount",
+    "noMovements": "No movements yet...",
+    "outgoing": "Outgoing Payments",
+    "made": "Payments Made",
+    "toDo": "Payments to Do",
+    "makePayment": "Make Payment",
+    "groups": "Groups",
+    "noPayments": "No payments yet. Make one!"
+  },
+  "transaction": {
+    "timeline": "Transaction Timeline",
+    "payments": "Payments",
+    "noPayments": "No payments available.",
+    "description": "Description",
+    "status": "Status",
+    "totalAmount": "Total Amount",
+    "expenses": "Expenses",
+    "noExpenses": "No expenses available."
+  },
+  "welcome": {
+    "greeting": "Welcome",
+    "hiMessage": "Hi! We hope you have a nice day."
+  },
+  "report": {
+    "generateButton": "Generate Expense Report"
+  },
+  "newContact": {
+    "title": "New Contact",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "photo": "Photo (link)",
+    "save": "Save",
+    "close": "Close"
+  },
+  "userProfile": {
+    "photoAlt": "User photo",
+    "photoPlaceholder": "URL of the photo",
+    "firstNamePlaceholder": "First Name",
+    "lastNamePlaceholder": "Last Name",
+    "emailPlaceholder": "Email",
+    "phonePlaceholder": "Phone",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel"
+  }
 }

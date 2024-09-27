@@ -2,8 +2,8 @@
   <form [formGroup]="userForm" (ngSubmit)="saveChanges()">
     <!-- Foto del perfil -->
     <div class="photo-container">
-      <img *ngIf="!isEditing" [src]="userProfile?.photo" alt="User photo" class="user-photo">
-      <input *ngIf="isEditing" type="text" formControlName="photo" placeholder="URL de la foto" class="form-input">
+      <img *ngIf="!isEditing" [src]="userProfile?.photo" alt="{{ 'userProfile.photoAlt' | translate }}" class="user-photo">
+      <input *ngIf="isEditing" type="text" formControlName="photo" [placeholder]="'userProfile.photoPlaceholder' | translate" class="form-input">
     </div>
 
     <!-- Nombre completo cuando no está editando -->
@@ -11,28 +11,35 @@
       <h2>{{ userProfile?.fullName }}</h2>
     </div>
 
+  
     <!-- Campos firstName y lastName al editar -->
     <div *ngIf="isEditing">
-      <input type="text" formControlName="firstName" placeholder="Nombre" class="form-input">
-      <input type="text" formControlName="lastName" placeholder="Apellido" class="form-input">
+      <input type="text" formControlName="firstName" [placeholder]="'userProfile.firstNamePlaceholder' | translate" class="form-input">
+      <input type="text" formControlName="lastName" [placeholder]="'userProfile.lastNamePlaceholder' | translate" class="form-input">
     </div>
 
     <!-- Email -->
     <p *ngIf="!isEditing">{{ userProfile?.email }}</p>
-    <input *ngIf="isEditing" type="email" formControlName="email" placeholder="Email" class="form-input">
+    <input *ngIf="isEditing" type="email" formControlName="email" [placeholder]="'userProfile.emailPlaceholder' | translate" class="form-input">
 
     <!-- Teléfono -->
     <p *ngIf="!isEditing">{{ userProfile?.phoneNumber }}</p>
-    <input *ngIf="isEditing" type="text" formControlName="phoneNumber" placeholder="Teléfono" class="form-input">
+    <input *ngIf="isEditing" type="text" formControlName="phoneNumber" [placeholder]="'userProfile.phonePlaceholder' | translate" class="form-input">
 
     <!-- Botones de acción -->
     <button *ngIf="!isEditing" class="edit-icon" (click)="enableEditing()">
       <mat-icon>edit</mat-icon>
     </button>
 
+   
     <div *ngIf="isEditing" class="action-buttons">
-      <button type="submit" class="btn btn-success">Guardar Cambios</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelEditing()">Cancelar</button>
+      <button type="submit" class="btn btn-success">{{ 'userProfile.saveChanges' | translate }}</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEditing()">{{ 'userProfile.cancel' | translate }}</button>
     </div>
   </form>
+ 
+
 </div>
+
+<app-language-switcher></app-language-switcher> <!-- Colocado aquí para mayor visibilidad -->
+
