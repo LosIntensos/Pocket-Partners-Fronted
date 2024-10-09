@@ -34,7 +34,7 @@ export class PageGroupComponent implements OnInit {
           this.groupService.getAllMembersByIdGroup(group.id).subscribe
           ((members: any) => {
             group.members = members;
-            // validate if the user is in the group
+            
             if (group.members.some(member => member.userId === this.currentUserId)) {
               group.isMember = true;
             } else {

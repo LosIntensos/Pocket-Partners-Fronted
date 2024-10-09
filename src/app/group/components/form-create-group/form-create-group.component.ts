@@ -12,7 +12,7 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
   styleUrl: './form-create-group.component.css'
 })
 export class FormCreateGroupComponent implements OnInit {
-  // For the multi select
+  
   groupMembers = new FormControl();
   groupMembersList: any[] = [];
 
@@ -56,8 +56,8 @@ export class FormCreateGroupComponent implements OnInit {
   createNewGroup() {
     this.group.name = this.firstFormGroup.get('firstCtrl')?.value as string;
     this.group.groupPhoto = this.firstFormGroup.get('secondCtrl')?.value as string;
-    //let members: any = this.secondFormGroup.get('firstCtrl')?.value;
-    //this.group.members = members;
+    
+    
     let currency: any = this.thirdFormGroup.get('firstCtrl')?.value;
     this.group.currency = currency;
     console.log(this.group);

@@ -19,16 +19,16 @@ export class PageExpensesComponent implements OnInit {
   }
 
   loadExpenses(): void {
-    this.isLoading = true; // Mostrar spinner mientras carga
+    this.isLoading = true; 
     this.expensesService.getExpenses().subscribe({
       next: (expenses: ExpensesEntity[]) => {
         this.expenses = expenses;
         console.log('Expenses loaded:', this.expenses);
-        this.isLoading = false; // Ocultar spinner una vez que carguen los datos
+        this.isLoading = false; 
       },
       error: (err) => {
         console.error('Error fetching expenses:', err);
-        this.isLoading = false; // Ocultar spinner si hay un error
+        this.isLoading = false; 
       }
     });
   }

@@ -16,7 +16,7 @@ export class TransactionsTimelineComponent implements OnInit, OnDestroy {
   public payments: PaymentEntity[] = [];
   public expenses: ExpensesEntity[] = [];
   private subscriptions: Subscription[] = [];
-  private userId: number | undefined; // Initialize with `undefined`
+  private userId: number | undefined; 
 
   constructor(
     private expensesService: ExpensesService,
@@ -25,11 +25,11 @@ export class TransactionsTimelineComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // Obtener el ID del usuario logueado
+    
     const authSubscription = this.authenticationService.currentUserId
       .subscribe((userId: number) => {
         this.userId = userId;
-        if (this.userId) { // Check if userId is defined
+        if (this.userId) { 
           this.getExpenses();
           this.getPayments();
         }
@@ -67,7 +67,7 @@ export class TransactionsTimelineComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Limpiar suscripciones para evitar fugas de memoria
+    
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

@@ -1,7 +1,7 @@
 export class GroupEntity {
   id: number;
   name: string;
-  currency: Array<{ id: number; code: string; }>; // Modificado para ser un array de objetos
+  currency: Array<{ id: number; code: string; }>; 
   groupPhoto: string;
   members: {
     userId: number;

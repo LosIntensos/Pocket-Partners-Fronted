@@ -1,4 +1,4 @@
-// expense-card.component.ts
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
 import { ContactService } from "../../../contacts/services/contact.service";
