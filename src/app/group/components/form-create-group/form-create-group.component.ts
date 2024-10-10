@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { GroupEntity } from '../../model/group.entity';
-import { PartnerEntity } from '../../../pockets/model/partnerEntity';
 import { PartnerService } from '../../../pockets/services/Partner.service';
 import { GroupMembersService } from '../../services/group-members.service';
 import { AuthenticationService } from '../../../iam/services/authentication.service';
@@ -12,7 +11,7 @@ import { AuthenticationService } from '../../../iam/services/authentication.serv
   styleUrl: './form-create-group.component.css'
 })
 export class FormCreateGroupComponent implements OnInit {
-  
+
   groupMembers = new FormControl();
   groupMembersList: any[] = [];
 
@@ -24,7 +23,7 @@ export class FormCreateGroupComponent implements OnInit {
     firstCtrl: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    firstCtrl: ['', [Validators.required, Validators.pattern('^(PEN|USD)$')]] // Solo permite PEN o USD
   });
   isLinear = false;
 
@@ -34,6 +33,7 @@ export class FormCreateGroupComponent implements OnInit {
   currentUserId: number = 0;
 
   constructor(private _formBuilder: FormBuilder, private groupMember: GroupMembersService, private authenticationService: AuthenticationService) { }
+
   ngOnInit() {
     this.authenticationService.currentUserId.subscribe((userId: any) => {
       this.currentUserId = userId;
@@ -56,9 +56,14 @@ export class FormCreateGroupComponent implements OnInit {
   createNewGroup() {
     this.group.name = this.firstFormGroup.get('firstCtrl')?.value as string;
     this.group.groupPhoto = this.firstFormGroup.get('secondCtrl')?.value as string;
-    
-    
+
     let currency: any = this.thirdFormGroup.get('firstCtrl')?.value;
+
+    if (!this.thirdFormGroup.valid) {
+      alert('Moneda inválida. Solo se permiten PEN o USD.');
+      return;
+    }
+
     this.group.currency = currency;
     console.log(this.group);
     this.createGroup.emit(this.group);
