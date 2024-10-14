@@ -8,7 +8,8 @@ import { MatIcon } from "@angular/material/icon";
 import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
 import { MatMenu, MatMenuItem, MatMenuTrigger } from "@angular/material/menu";
 import { AuthenticationService } from '../../../iam/services/authentication.service';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
+import {DarkModeSwitcherComponent} from "../dark-mode-switcher/dark-mode-switcher.component";
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatMenu,
     MatMenuItem,
     MatAnchor,
-    TranslateModule
+    TranslateModule,
+    DarkModeSwitcherComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
