@@ -53,7 +53,8 @@ import { SignInComponent } from "./iam/pages/sign-in/sign-in.component";
 import { SignUpComponent } from "./iam/pages/sign-up/sign-up.component";
 import { AuthenticationSectionComponent } from "./iam/components/authentication-section/authentication-section.component";
 import { authenticationInterceptor } from './iam/services/authentication.interceptor';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -103,6 +104,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatStepperModule,
     MatButtonModule,

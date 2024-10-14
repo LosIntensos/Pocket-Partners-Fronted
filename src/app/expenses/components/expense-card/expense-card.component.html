@@ -6,19 +6,20 @@
   <mat-card-content class="expense-content">
     <p>{{ 'expense.totalAmount' | translate }}: {{ expense.amount }}</p>
     <p>{{ 'expense.uploadedBy' | translate }}: {{ user?.fullName }}</p>
+    <p>{{ 'expense.dueDate' | translate }}: {{ expense.dueDate | date: 'shortDate' }}</p>
   </mat-card-content>
   <mat-card-actions style="display: flex; justify-content: space-between;" class="expense-actions">
-    <button 
-      mat-icon-button 
-      [routerLink]="['/outgoing', 'add-payment']" 
+    <button
+      mat-icon-button
+      [routerLink]="['/outgoing', 'add-payment']"
       [attr.aria-label]=" 'expense.makePayment' | translate "
     >
       <mat-icon>payment</mat-icon>
-    </button>    
-    <button 
-      mat-icon-button 
-      class="red-light" 
-      [attr.aria-label]=" 'expense.delete' | translate " 
+    </button>
+    <button
+      mat-icon-button
+      class="red-light"
+      [attr.aria-label]=" 'expense.delete' | translate "
       (click)="deleteExpense(expense.id)"
     >
       <mat-icon>delete</mat-icon>
