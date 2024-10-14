@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/pocket-partners/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

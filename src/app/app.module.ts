@@ -55,6 +55,8 @@ import { AuthenticationSectionComponent } from "./iam/components/authentication-
 import { authenticationInterceptor } from './iam/services/authentication.interceptor';
 import { DarkModeSwitcherComponent } from './public/components/dark-mode-switcher/dark-mode-switcher.component';
 import {MatSlideToggle} from "@angular/material/slide-toggle";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -104,6 +106,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatStepperModule,
     MatButtonModule,
