@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ExpensesEntity } from '../../model/expenses.entity';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {PartnerEntity} from "../../../pockets/model/partnerEntity";
 import {OperationEntity} from "../../../group/model/operation-entity";
@@ -28,6 +28,9 @@ export class FormExpenseComponent {
   fourthFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
+  fifthFormGroup = this._formBuilder.group({
+    dueDateCtrl: ['', Validators.required],
+  });
 
   @Input() user: PartnerEntity = new PartnerEntity();
   @Input() joinedGroups: any;
@@ -40,6 +43,7 @@ export class FormExpenseComponent {
     this.Expense.amount = this.thirdFormGroup.value.firstCtrl as unknown as number;
     this.Expense.userId = this.user.id;
     this.Expense.groupId = this.fourthFormGroup.value.firstCtrl as unknown as number;
+    this.Expense.dueDate = this.fifthFormGroup.value.dueDateCtrl as unknown as Date;
     this.onAddExpense.emit(this.Expense);
 
     const groupId = this.Expense.groupId;
