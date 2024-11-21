@@ -1,36 +1,116 @@
-import {Component, OnInit} from '@angular/core';
-import {ContactEntity} from "../../model/contact.entity";
-import {ContactService} from "../../services/contact.service";
-import {MatDialog} from "@angular/material/dialog";
-import {FormCreateContactComponent} from "../../components/form-create-contact/form-create-contact.component";
-import {GroupService} from "../../../group/services/group.service";
+import { Component, OnInit } from '@angular/core';
+import { ContactService } from "../../services/contact.service";
+import { AuthenticationService } from "../../../iam/services/authentication.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-components',
+  selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit{
+export class ContactComponent implements OnInit {
 
-  public contacts: ContactEntity[] = [];
-  constructor(private contactService: ContactService, private dialog: MatDialog) { }
+  public userProfile: any | null = null;  
+  public userForm: FormGroup; 
+  public isEditing: boolean = false; 
+  public userId: number | undefined; 
 
-  gelAllContacts() {
-    this.contactService.getAll()
-      .subscribe((contacts: any) => {
-        this.contacts = contacts;
-      });
+  constructor(
+    private contactService: ContactService,
+    private authService: AuthenticationService,  
+    private fb: FormBuilder  
+  ) {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required],
+      photo: ['']
+    });
   }
 
-  openPopup() {
-    var _popup = this.dialog.open(FormCreateContactComponent,{width: '40%'});
-    _popup.afterClosed().subscribe(result => {
-      this.gelAllContacts();
-    } );
+  
+  getUserDetails() {
+    this.authService.currentUserId.subscribe((userId: any) => {
+      if (userId) {
+        this.userId = userId; 
+        
+        this.contactService.getUserById(userId)
+          .subscribe((profile: any) => {
+            this.userProfile = profile;  
+
+            
+            if (profile.fullName) {
+              const names = profile.fullName.split(' ');
+              this.userProfile.firstName = names[0]; 
+              this.userProfile.lastName = names.slice(1).join(' '); 
+            }
+
+            
+            this.userForm.patchValue({
+              firstName: this.userProfile.firstName || '',  
+              lastName: this.userProfile.lastName || '',
+              email: profile.email || '',
+              phoneNumber: profile.phoneNumber || '',
+              photo: profile.photo || ''
+            });
+          }, error => {
+            console.error('Error al obtener el perfil del usuario:', error);
+          });
+      }
+    });
   }
 
   ngOnInit() {
-    this.gelAllContacts();
+    this.getUserDetails();  
   }
 
+  
+  enableEditing() {
+    this.isEditing = true;
+
+    
+    if (!this.userProfile.firstName || !this.userProfile.lastName) {
+      const names = this.userProfile.fullName ? this.userProfile.fullName.split(' ') : ['', ''];
+      this.userProfile.firstName = names[0];
+      this.userProfile.lastName = names.slice(1).join(' ');
+    }
+
+    this.userForm.patchValue({
+      firstName: this.userProfile.firstName,
+      lastName: this.userProfile.lastName
+    });
+  }
+
+  
+  saveChanges() {
+    if (this.userForm.valid) {
+      const updatedData = {
+        firstName: this.userForm.value.firstName,
+        lastName: this.userForm.value.lastName,
+        email: this.userForm.value.email,
+        phoneNumber: this.userForm.value.phoneNumber,
+        photo: this.userForm.value.photo
+      };
+
+      this.contactService.updateUserById(this.userId, updatedData).subscribe({
+        next: (response) => {
+          
+          this.userProfile.fullName = `${updatedData.firstName} ${updatedData.lastName}`;
+
+          this.isEditing = false;
+          this.getUserDetails(); 
+        },
+        error: (error) => {
+          console.error('Error actualizando el perfil:', error);
+        }
+      });
+    }
+  }
+
+  
+  cancelEditing() {
+    this.isEditing = false;
+    this.getUserDetails(); 
+  }
 }

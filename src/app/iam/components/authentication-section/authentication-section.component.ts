@@ -29,7 +29,7 @@ export class AuthenticationSectionComponent {
    * Event Handler for the sign-in button.
    */
   onSignIn() {
-    // Navigate to the sign-in page.
+    
     this.router.navigate(['/sign-in']).then();
   }
 
@@ -37,7 +37,7 @@ export class AuthenticationSectionComponent {
    * Event Handler for the sign-up button.
    */
   onSignUp() {
-    // Navigate to the sign-up page.
+    
     this.router.navigate(['/sign-up']).then();
   }
 
@@ -45,7 +45,7 @@ export class AuthenticationSectionComponent {
    * Event Handler for the sign-out button.
    */
   onSignOut() {
-    // Sign out the user.
+    
     this.authenticationService.signOut();
   }
 

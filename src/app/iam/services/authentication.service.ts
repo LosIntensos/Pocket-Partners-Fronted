@@ -43,7 +43,7 @@ export class AuthenticationService {
     return this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
       .subscribe({
         next: (response) => {
-          // console.log(`Signed up as ${response.username} with id: ${response.id}`);
+          
           const infoToSave = new SignInInfo(signInInfo.firstName, signInInfo.lastName, signInInfo.phoneNumber, signInInfo.photo, signInInfo.email, response.id);
           this.currentUserInformation = new BehaviorSubject<SignInInfo>(infoToSave);
           this.router.navigate(['/sign-in']).then();
@@ -85,7 +85,7 @@ export class AuthenticationService {
               }
             });
           } else {
-            // obtain by id the user that is signed in
+            
             this.signedInUserId.subscribe((userId: any) => {
               this.http.get<PartnerEntity>(`${this.basePath}/usersInformation/userId/${response.id}`, this.httpOptions)
                 .subscribe({

@@ -23,7 +23,7 @@ export class AddExpenseComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private groupService: GroupService,
     private groupOperationService: GroupOperationsService,
-    private router: Router // Agregado para redirigir a expenses
+    private router: Router 
   ) { }
 
   user: PartnerEntity = new PartnerEntity();
@@ -49,11 +49,11 @@ export class AddExpenseComponent implements OnInit {
     delete expenseClean.createdAt;
     delete expenseClean.updatedAt;
     this.expenseService.create(expenseClean).subscribe(() => {
-      this.redirectToExpensesList(); // Redirigir a la lista de gastos después de crear el gasto
+      this.redirectToExpensesList(); 
     });
   }
 
   redirectToExpensesList() {
-    this.router.navigate(['/expenses']); // Redirigir a la lista de gastos
+    this.router.navigate(['/expenses']); 
   }
 }

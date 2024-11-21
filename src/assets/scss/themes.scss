@@ -1,0 +1,92 @@
+
+/*@angular/material/prebuilt-themes/indigo-pink.css*/
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/*
+$black-87-opacity: rgba(0, 0, 0, 0.87);
+$white-87-opacity: rgba(255, 255, 255, 0.87);
+
+$pallete-colors-pocket-partners: (
+  50: #e0f7fa,
+  100: #b2ebf2,
+  200: #80deea,
+  300: #4dd0e1,
+  400: #26c6da,
+  500: #00bcd4,
+  600: #00acc1,
+  700: #0097a7,
+  800: #00838f,
+  900: #006064,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $black-87-opacity,
+    700: $black-87-opacity,
+    800: $black-87-opacity,
+    900: $white-87-opacity,
+  ),
+);
+*/
+
+/*Pasar la variable como argumento y definir que color utilizar:
+
+Example:
+  primary: mat.define-palette(mat.$pallete-colors-pocket-partners, 300),
+ */
+
+$light-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: mat.define-palette(mat.$cyan-palette, 400),
+        accent: mat.define-palette(mat.$light-green-palette, A400),
+        warn: mat.define-palette(mat.$red-palette),
+        ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+);
+
+/*========================================================================*/
+$dark-primary: mat.define-palette(mat.$deep-purple-palette, A200);
+$dark-accent: mat.define-palette(mat.$pink-palette, 300);
+$dark-warn: mat.define-palette(mat.$red-palette);
+$dark-background: (
+  background: mat.define-palette(mat.$grey-palette, 900),
+  card: mat.define-palette(mat.$grey-palette, 800),
+  dialog: mat.define-palette(mat.$grey-palette, 700),
+  disabled-button: mat.define-palette(mat.$grey-palette, 600),
+  raised-button: mat.define-palette(mat.$grey-palette, 500),
+  focused-button: mat.define-palette(mat.$grey-palette, 400),
+  selected-button: mat.define-palette(mat.$grey-palette, 300),
+  selected-disabled-button: mat.define-palette(mat.$grey-palette, 200),
+  disabled-button-toggle: mat.define-palette(mat.$grey-palette, 100),
+  unselected-chip: mat.define-palette(mat.$grey-palette, 50),
+  disabled-list-option: mat.define-palette(mat.$grey-palette, 100)
+);
+
+$dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $dark-primary,
+        accent: $dark-accent,
+        warn: $dark-warn,
+        background: $dark-background,
+        foreground: mat.define-palette(mat.$grey-palette, A100),
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+);
+
+@include mat.all-component-themes($light-theme);
+
+.dark-mode {
+  @include mat.all-component-colors($dark-theme);
+}

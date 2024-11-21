@@ -17,14 +17,14 @@ import { OperationEntity } from "../../../group/model/operation-entity";
 export class IncomingComponent implements OnInit {
   public groups: GroupEntity[] = [];
   public groupPayments: { [key: number]: PaymentEntity[] } = {};
-  public users: { [key: number]: ContactEntity } = {}; // Store user details
+  public users: { [key: number]: ContactEntity } = {}; 
   dataLoaded: Promise<boolean> = new Promise((resolve) => resolve(false));
 
   constructor(
     private groupService: GroupService,
     private groupOperations: GroupOperationsService,
     private paymentService: PaymentService,
-    private userService: ContactService // Inject UserService
+    private userService: ContactService 
   ) { }
 
   getAllGroups() {

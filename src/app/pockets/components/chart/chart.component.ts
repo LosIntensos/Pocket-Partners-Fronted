@@ -90,7 +90,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   }
 
   formatDate(date: Date): string {
-    return new Date(date).toLocaleDateString('en-GB'); // Ajusta el formato según tus necesidades
+    return new Date(date).toLocaleDateString('en-GB'); 
   }
 
   getRandomColor(): string {

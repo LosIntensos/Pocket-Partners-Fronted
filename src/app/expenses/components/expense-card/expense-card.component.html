@@ -1,17 +1,27 @@
 <mat-card class="expense-card">
   <mat-card-header class="expense-header">
-    <mat-card-title>Expense: {{expense.name}}</mat-card-title>
-    <mat-card-subtitle>Created: {{expense.createdAt | date:'medium'}}</mat-card-subtitle>
+    <mat-card-title>{{ 'expense.title' | translate }}: {{ expense.name }}</mat-card-title>
+    <mat-card-subtitle>{{ 'expense.created' | translate }}: {{ expense.createdAt | date: 'medium' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="expense-content">
-    <p>Total Amount: {{expense.amount}}</p>
-    <p>Uploaded By: {{user?.fullName}}</p>
+    <p>{{ 'expense.totalAmount' | translate }}: {{ expense.amount }}</p>
+    <p>{{ 'expense.uploadedBy' | translate }}: {{ user?.fullName }}</p>
+    <p>{{ 'expense.dueDate' | translate }}: {{ expense.dueDate | date: 'shortDate' }}</p>
   </mat-card-content>
-  <mat-card-actions style="display: flex;  justify-content: space-between;" class="expense-actions">
-    <button mat-icon-button [routerLink]="['/outgoing', 'add-payment']" aria-label="Make Payment">
+  <mat-card-actions style="display: flex; justify-content: space-between;" class="expense-actions">
+    <button
+      mat-icon-button
+      [routerLink]="['/outgoing', 'add-payment']"
+      [attr.aria-label]=" 'expense.makePayment' | translate "
+    >
       <mat-icon>payment</mat-icon>
     </button>
-    <button mat-icon-button  class="red-light" aria-label="Delete Expense" (click)="deleteExpense(expense.id)">
+    <button
+      mat-icon-button
+      class="red-light"
+      [attr.aria-label]=" 'expense.delete' | translate "
+      (click)="deleteExpense(expense.id)"
+    >
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>

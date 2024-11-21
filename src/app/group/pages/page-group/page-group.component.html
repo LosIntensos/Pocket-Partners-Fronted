@@ -1,32 +1,30 @@
 @if (isDataLoaded | async) {
-  <h1 class="title">Todos los grupos</h1>
+  <h1 class="title">{{ 'groups.allGroups' | translate }}</h1>
 
-  <!-- Barra de búsqueda -->
   <div class="search-container">
-    <input type="text" placeholder="Buscar grupo" [(ngModel)]="searchTerm" />
+    <input type="text" placeholder="{{ 'groups.searchGroup' | translate }}" [(ngModel)]="searchTerm" />
   </div>
 
-  <!-- Listado de grupos filtrado -->
   <div class="groups-container">
     <div class="group-item" *ngFor="let group of filteredGroups()">
       <h2>{{ group.name }}</h2>
-      <p>{{ group.createdAt | date: 'dd/MM/yyyy'}}</p>
+      <p>{{ group.createdAt | date: 'dd/MM/yyyy' }}</p>
 
       @if (group.isMember) {
-        <p>Estás en el grupo</p>
+        <p>{{ 'groups.youAreInGroup' | translate }}</p>
         <div class="group-item" (click)="openGroup(group.id)">
-          <mat-icon>open_in_new</mat-icon> Ver más detalles
+          <mat-icon>open_in_new</mat-icon> {{ 'groups.viewDetails' | translate }}
         </div>
       } @else {
         <div class="group-item" (click)="joinGroup(group.id)">
-          <mat-icon>open_in_new</mat-icon> Unirse al grupo
+          <mat-icon>open_in_new</mat-icon> {{ 'groups.joinGroup' | translate }}
         </div>
       }
     </div>
   </div>
 
   <div class="create-group-container">
-    <a [routerLink]="['/create-group']" class="create-group-button">Crear grupo</a>
+    <a [routerLink]="['/create-group']" class="create-group-button">{{ 'groups.createGroup' | translate }}</a>
   </div>
 } @else {
   <div class="loading-container">

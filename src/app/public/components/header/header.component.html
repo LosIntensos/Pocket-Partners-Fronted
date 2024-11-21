@@ -3,35 +3,40 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="spacer"></span>
-  <label>PocketPartners</label>
+  <label>{{ 'header.appTitle' | translate }}</label>
   <img src="assets/images/logo.png" alt="logo" style="height: 50px; margin-left: 5px">
+
+  <span class="spacer"></span>
+
+  <app-dark-mode-switcher></app-dark-mode-switcher>
+
 </mat-toolbar>
 <mat-drawer-container autosize>
   <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
       <mat-list-item>
-        <button routerLink="home" mat-button><mat-icon>home</mat-icon> Home</button>
+        <button routerLink="home" mat-button><mat-icon>home</mat-icon> {{ 'header.home' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="users" mat-button><mat-icon>person</mat-icon> Users</button>
+        <button routerLink="profile" mat-button><mat-icon>person</mat-icon> {{ 'header.profile' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="groups" mat-button><mat-icon>people</mat-icon> Groups</button>
+        <button routerLink="groups" mat-button><mat-icon>people</mat-icon> {{ 'header.groups' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="create-group" mat-button><mat-icon>add</mat-icon>New Group</button>
+        <button routerLink="create-group" mat-button><mat-icon>add</mat-icon> {{ 'header.newGroup' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="expenses" mat-button><mat-icon>money</mat-icon>Expenses</button>
+        <button routerLink="expenses" mat-button><mat-icon>money</mat-icon> {{ 'header.expenses' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="incoming" mat-button><mat-icon>money</mat-icon>Incoming Payments</button>
+        <button routerLink="incoming" mat-button><mat-icon>money</mat-icon> {{ 'header.incomingPayments' | translate }}</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="outgoing" mat-button><mat-icon>money</mat-icon>Outgoing Payments</button>
+        <button routerLink="outgoing" mat-button><mat-icon>money</mat-icon> {{ 'header.outgoingPayments' | translate }}</button>
       </mat-list-item>
       <mat-list-item (click)="logout()">
-        <button mat-button><mat-icon>logout</mat-icon>Logout</button>
+        <button mat-button><mat-icon>logout</mat-icon> {{ 'header.logout' | translate }}</button>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>

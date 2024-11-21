@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   options = [
     { path: '/home', title: 'Home' },
     { path: '/groups', title: 'Groups' },
-    { path: '/users', title: 'Users' },
+    { path: '/profile', title: 'Profile' },
     { path: '/incoming', title: 'Incoming payments' },
     { path: '/outgoing', title: 'Outgoing  payments' },
     { path: '/expenses', title: 'Expenses' },
